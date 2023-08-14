@@ -1,0 +1,47 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+   binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Example {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Announcements {
+  id         String   @id @default(cuid())
+  announced  Boolean  @default(false)
+  instanceId String
+  videoId    String
+  Instance   Instance @relation(fields: [instanceId], references: [id])
+}
+
+model Instance {
+  id              String          @id @default(cuid())
+  createdAt DateTime @default(now())
+  type            String
+  name            String
+  automation      Boolean         @default(true)
+  botToken        String
+  serverId        String
+  channelId       String
+  accountId       String
+  accountPfp      String
+  managers        String
+  announcementMsg String         @db.Text @default("{\"content\": \"%username% just uploaded!\\n%link%\"}")
+  Announcements   Announcements[]
+}
+
+model Whitelisted {
+  discordId String @id
+  whitelisted Boolean @default(true)
+  whitelistedAt DateTime @default(now())
+}
