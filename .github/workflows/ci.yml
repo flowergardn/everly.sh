@@ -6,6 +6,7 @@ env:
   DATABASE_URL: "https://fake.com"
   TWITCH_ACCESS_TOKEN: "hehe"
   TWITCH_CLIENT_ID: "<3"
+  DEV_WEBHOOK: "awesome"
 
 jobs:
   build:

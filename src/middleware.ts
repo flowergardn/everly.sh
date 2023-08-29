@@ -3,7 +3,7 @@ import { withClerkMiddleware, getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const publicPaths = ["/", "/sign-in*", "/sign-up*"];
+const publicPaths = ["/", "/sign-in*", "/sign-up*", "/example"];
 
 const isPublic = (path: string) => {
   if (new RegExp("^/api/.*$").exec(path)) return true;
