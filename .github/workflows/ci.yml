@@ -7,6 +7,8 @@ env:
   TWITCH_ACCESS_TOKEN: "hehe"
   TWITCH_CLIENT_ID: "<3"
   DEV_WEBHOOK: "awesome"
+  CLERK_WEBHOOK_SECRET: "qt"
+  SELLPASS_TOKEN: "pi"
 
 jobs:
   build:
