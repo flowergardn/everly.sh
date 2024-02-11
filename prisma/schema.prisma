@@ -1,12 +1,11 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["jsonProtocol"]
-   binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -26,7 +25,7 @@ model Announcements {
 
 model Instance {
   id              String          @id @default(cuid())
-  createdAt DateTime @default(now())
+  createdAt       DateTime        @default(now())
   type            String
   name            String
   automation      Boolean         @default(true)
@@ -36,12 +35,12 @@ model Instance {
   accountId       String
   accountPfp      String
   managers        String
-  announcementMsg String         @db.Text @default("{\"content\": \"%username% just uploaded!\\n%link%\"}")
+  announcementMsg String          @default("{\"content\": \"%username% just uploaded!\\n%link%\"}") @db.Text
   Announcements   Announcements[]
 }
 
 model Whitelisted {
-  discordId String @id
-  whitelisted Boolean @default(true)
+  discordId     String   @id
+  whitelisted   Boolean  @default(true)
   whitelistedAt DateTime @default(now())
 }
