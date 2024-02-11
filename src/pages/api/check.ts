@@ -85,6 +85,10 @@ const checkInstances = async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
+    if (latest.isShort && instance.ignoreShorts) {
+      return;
+    }
+
     if (!latest.announced) await sendYoutubeAnnouncement(instance, latest);
   };
 

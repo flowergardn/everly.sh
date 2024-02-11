@@ -9,12 +9,6 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model Announcements {
   id         String   @id @default(cuid())
   announced  Boolean  @default(false)
@@ -29,6 +23,7 @@ model Instance {
   type            String
   name            String
   automation      Boolean         @default(true)
+  ignoreShorts    Boolean         @default(false)
   botToken        String
   serverId        String
   channelId       String

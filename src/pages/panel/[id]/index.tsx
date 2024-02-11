@@ -32,36 +32,60 @@ const InstanceInfo: NextPage<{ id: string }> = ({ id }) => {
     );
 
   const Automation = () => {
-    const { mutate: toggleAutomation } =
-      api.instances.toggleAutomation.useMutation({
-        onSuccess: async () => {
-          await ctx.instances.getById.invalidate();
-        },
-      });
-
-    const onClick = () => toggleAutomation({ id: data.id });
-
     const AutomationButton = () => {
+      const { mutate: toggleAutomation } =
+        api.instances.toggleAutomation.useMutation({
+          onSuccess: async () => {
+            await ctx.instances.getById.invalidate();
+          },
+        });
+      const onClick = () => toggleAutomation({ id: data.id });
+
       if (!data.automation) {
         return (
           <button className={"btn-success btn capitalize"} onClick={onClick}>
-            Enable
+            Enable automation
           </button>
         );
       }
 
       return (
         <button className={"btn-error btn capitalize"} onClick={onClick}>
-          Disable
+          Disable automation
         </button>
       );
     };
+
+    const ShortsButton = () => {
+      const { mutate: toggleShorts } = api.instances.toggleShorts.useMutation({
+        onSuccess: async () => {
+          await ctx.instances.getById.invalidate();
+        },
+      });
+      const onClick = () => toggleShorts({ id: data.id });
+
+      if (!data.ignoreShorts) {
+        return (
+          <button className={"btn-error btn capitalize"} onClick={onClick}>
+            Disable shorts
+          </button>
+        );
+      }
+
+      return (
+        <button className={"btn-success btn capitalize"} onClick={onClick}>
+          Enable shorts
+        </button>
+      );
+    };
+
     return (
       <div className={"card mt-10 w-52 bg-base-200 md:ml-12"}>
         <div className="card-body items-center text-center">
-          <h2 className="card-title">Automation</h2>
-          <div className="card-actions mt-4 justify-end">
+          <h2 className="card-title">Options</h2>
+          <div className="card-actions mt-4 flex items-center justify-center">
             <AutomationButton />
+            <ShortsButton />
           </div>
         </div>
       </div>

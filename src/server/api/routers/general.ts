@@ -6,6 +6,7 @@ import { clerkClient } from "@clerk/nextjs";
 
 export interface VideoObject {
   id: string;
+  isShort: boolean;
   link: string;
   thumbnail: string;
   channel: {

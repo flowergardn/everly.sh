@@ -230,6 +230,37 @@ export const instanceRouter = createTRPCRouter({
         },
       });
     }),
+  toggleShorts: customerProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const instance = await ctx.prisma.instance.findFirst({
+        where: {
+          managers: {
+            contains: ctx.userId,
+          },
+          id: input.id,
+        },
+      });
+
+      if (!instance) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+        });
+      }
+
+      return await prisma.instance.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          ignoreShorts: !instance.ignoreShorts,
+        },
+      });
+    }),
   getAnnouncements: customerProcedure
     .input(
       z.object({
