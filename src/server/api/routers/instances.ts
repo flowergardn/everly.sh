@@ -363,7 +363,7 @@ export const instanceRouter = createTRPCRouter({
           latest: VideoObject;
           previous: VideoObject[];
         };
-      } = await axios.get(`https://yt.everly.sh/${instance.accountId}`);
+      } = await axios.get(`https://yt.astrid.sh/${instance.accountId}`);
 
       const allVideos = [videos.latest, ...videos.previous];
 

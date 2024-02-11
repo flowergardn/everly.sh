@@ -51,7 +51,7 @@ export const generalRouter = createTRPCRouter({
           latest: VideoObject;
           previous: VideoObject[];
         };
-      } = await axios.get(`https://yt.everly.sh/${instance.accountId}`);
+      } = await axios.get(`https://yt.astrid.sh/${instance.accountId}`);
 
       if (!videos.latest) {
         // Disable automation to prevent this error in the future.
