@@ -7,7 +7,7 @@ import {
   DiscordEmbedDescription,
   DiscordMessage,
 } from "@skyra/discord-components-react";
-import {
+import type {
   APIButtonComponent,
   APIButtonComponentWithURL,
   APIMessage,

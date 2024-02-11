@@ -1,4 +1,4 @@
-import { ReactElement, ReactFragment } from "react";
+import type { ReactElement, ReactFragment } from "react";
 
 const Card = (props: {
   title: string;
@@ -6,8 +6,8 @@ const Card = (props: {
   size?: string;
   center?: boolean;
 }) => {
-  let _s = props.size ?? "w-52";
-  let center = props.center ?? true;
+  const _s = props.size ?? "w-52";
+  const center = props.center ?? true;
 
   return (
     <div className={`card mt-10 ${_s} bg-base-200 md:ml-12`}>

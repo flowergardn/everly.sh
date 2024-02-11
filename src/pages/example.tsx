@@ -133,7 +133,11 @@ const Example: NextPage = () => {
     );
   };
 
-  const examples = [<Message />, <Message2 />, <Message3 />];
+  const examples = [
+    <Message key={"message1"} />,
+    <Message2 key={"message2"} />,
+    <Message3 key={"message3"} />,
+  ];
 
   const handleNextClick = () => {
     setActiveIndex((activeIndex + 1) % examples.length);

@@ -3,7 +3,7 @@ import { adminProcedure, createTRPCRouter } from "../trpc";
 import { clerkClient } from "@clerk/nextjs";
 import { User } from "@clerk/nextjs/dist/types/server";
 import { TRPCError } from "@trpc/server";
-import { Announcements, Instance } from "@prisma/client";
+import type { Announcements, Instance } from "@prisma/client";
 import { prisma } from "~/server/db";
 
 interface FilteredUser {
@@ -43,9 +43,10 @@ const filterInstance = async (instanceData: Instance) => {
     },
   });
 
-  const managersArr = JSON.parse(instanceData.managers);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const managersArr: string[] = JSON.parse(instanceData.managers);
 
-  let instance: DetailedInstance = {
+  const instance: DetailedInstance = {
     id: instanceData.id,
     message: instanceData.announcementMsg,
     type: instanceData.type,

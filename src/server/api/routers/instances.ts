@@ -7,7 +7,7 @@ import { prisma } from "~/server/db";
 import { ButtonStyle } from "discord-api-types/payloads/v10";
 import * as twitch from "~/lib/twitch";
 import { isNonEmptyString } from "~/lib/general";
-import { VideoObject } from "./general";
+import type { VideoObject } from "./general";
 import axios from "axios";
 import { sendYoutubeAnnouncement } from "~/pages/api/check";
 import { clerkClient } from "@clerk/nextjs";

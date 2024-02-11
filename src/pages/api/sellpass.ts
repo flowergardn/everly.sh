@@ -1,7 +1,7 @@
 import axios from "axios";
-import { NextApiRequest, NextApiResponse } from "next";
-import InvoiceResponse from "~/interfaces/SellpassInvoice";
-import Purchase from "~/interfaces/SellpassWebhook";
+import type { NextApiRequest, NextApiResponse } from "next";
+import type InvoiceResponse from "~/interfaces/SellpassInvoice";
+import type Purchase from "~/interfaces/SellpassWebhook";
 import { prisma } from "~/server/db";
 import constants from "~/lib/constants";
 import { env } from "~/env.mjs";

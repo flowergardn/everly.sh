@@ -1,4 +1,5 @@
-import { GetStaticProps, NextPage } from "next";
+import type { APIMessage } from "discord-api-types/v10";
+import type { GetStaticProps, NextPage } from "next";
 import { toast } from "react-hot-toast";
 import Card from "~/components/Card";
 import Navbar from "~/components/Navbar";
@@ -95,7 +96,8 @@ const AdminInstance: NextPage<{ id: string }> = ({ id }) => {
       return <Card title={"Message"}>Error loading instance Message :c</Card>;
     }
 
-    const message = JSON.parse(data.message);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const message: APIMessage = JSON.parse(data.message);
 
     return (
       <Card title="Message" size="w-fit" center={false}>

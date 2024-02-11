@@ -2,7 +2,8 @@
 
 import type { NextPage } from "next";
 import { useState } from "react";
-import { SubmitHandler, useWatch } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
+import { useWatch } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import Navbar from "~/components/Navbar";

@@ -1,12 +1,12 @@
 import { Webhook } from "svix";
 import { buffer } from "micro";
-import { NextApiRequest, NextApiResponse } from "next";
-import { IncomingHttpHeaders } from "http";
-import { UserWebhookEvent } from "@clerk/nextjs/dist/types/server";
+import type { NextApiRequest, NextApiResponse } from "next";
+import type { IncomingHttpHeaders } from "http";
+import type { UserWebhookEvent } from "@clerk/nextjs/dist/types/server";
 import { clerkClient } from "@clerk/nextjs/server";
 import { prisma } from "~/server/db";
 import { EmbedBuilder } from "@discordjs/builders";
-import { APIEmbedField } from "discord-api-types/v10";
+import type { APIEmbedField } from "discord-api-types/v10";
 import axios from "axios";
 import { env } from "~/env.mjs";
 

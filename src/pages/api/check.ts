@@ -51,7 +51,7 @@ const sendYoutubeAnnouncement = async (
     return;
   }
 
-  sendMsg(parsedEmbed, instance);
+  await sendMsg(parsedEmbed, instance);
 
   await prisma.announcements.create({
     data: {
@@ -131,7 +131,7 @@ const checkInstances = async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
-    sendMsg(parsedEmbed, instance);
+    await sendMsg(parsedEmbed, instance);
 
     await prisma.announcements.create({
       data: {
