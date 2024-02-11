@@ -72,6 +72,8 @@ const checkInstances = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   });
 
+  let announced = 0;
+
   const checkYouTube = async (instance: Instance) => {
     const videos = await caller.general.getYTVideos({
       instanceId: instance.id,
@@ -89,7 +91,10 @@ const checkInstances = async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
-    if (!latest.announced) await sendYoutubeAnnouncement(instance, latest);
+    if (!latest.announced) {
+      await sendYoutubeAnnouncement(instance, latest);
+      announced++;
+    }
   };
 
   const checkTwitch = async (instance: Instance) => {
@@ -137,6 +142,8 @@ const checkInstances = async (req: NextApiRequest, res: NextApiResponse) => {
 
     await sendMsg(parsedEmbed, instance);
 
+    announced++;
+
     await prisma.announcements.create({
       data: {
         videoId: currentStream.id,
@@ -169,6 +176,7 @@ const checkInstances = async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.json({
     success: true,
+    announced,
   });
 };
 
