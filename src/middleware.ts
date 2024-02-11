@@ -30,7 +30,7 @@ export default withClerkMiddleware(async (request: NextRequest) => {
   if (!userId) {
     const signInUrl = new URL(
       process.env.NODE_ENV === "production"
-        ? "https://accounts.everly.sh/sign-in"
+        ? "https://accounts.astrid.sh/sign-in"
         : "https://quality-snake-94.accounts.dev/sign-in",
       url
     );
