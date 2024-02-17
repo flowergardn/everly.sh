@@ -57,6 +57,8 @@ const InstanceInfo: NextPage<{ id: string }> = ({ id }) => {
     };
 
     const ShortsButton = () => {
+      if (data.type !== "youtube") return <></>;
+
       const { mutate: toggleShorts } = api.instances.toggleShorts.useMutation({
         onSuccess: async () => {
           await ctx.instances.getById.invalidate();
