@@ -15,7 +15,7 @@
     "@clerk/nextjs": "^4.20.0",
     "@clerk/themes": "^1.7.4",
     "@discordjs/builders": "^1.6.3",
-    "@prisma/client": "^4.14.0",
+    "@prisma/client": "5.10.0",
     "@sentry/nextjs": "^7.54.0",
     "@skyra/discord-components-react": "^3.6.0",
     "@t3-oss/env-nextjs": "^0.3.1",
@@ -56,7 +56,7 @@
     "postcss": "^8.4.21",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
-    "prisma": "^4.14.0",
+    "prisma": "5.10.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5.0.4"
   },
