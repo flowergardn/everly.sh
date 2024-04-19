@@ -159,10 +159,13 @@ const checkInstances = async (req: NextApiRequest, res: NextApiResponse) => {
         await checkYouTube(i);
         break;
       }
-      case "twitch": {
-        await checkTwitch(i);
-        break;
-      }
+
+      // NOTE: Disabled until further notice:
+
+      // case "twitch": {
+      //   await checkTwitch(i);
+      //   break;
+      // }
       default:
         console.log(`${i.type} was an invalid type!`);
     }
