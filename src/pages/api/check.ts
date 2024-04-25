@@ -30,6 +30,17 @@ const sendYoutubeAnnouncement = async (
   instance: Instance,
   video: VideoObject
 ) => {
+  const announcement = await prisma.announcements.findFirst({
+    where: {
+      videoId: video.id,
+      AND: {
+        instanceId: instance.id,
+      },
+    },
+  });
+
+  if (announcement) return;
+
   const _embed = JSON.parse(instance.announcementMsg) as APIMessage;
 
   const parsedEmbed = parseEmbed(
